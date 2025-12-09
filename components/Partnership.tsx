@@ -24,7 +24,7 @@ export const Partnership: React.FC = () => {
               Agency Partners
             </div>
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 leading-tight">
-              Outsource a <br/>
+              Rent a <br/>
               <span className="text-primary">Tech Team</span>
             </h2>
             <p className="text-lg text-muted mb-8 leading-relaxed">

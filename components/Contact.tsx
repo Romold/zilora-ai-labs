@@ -5,7 +5,7 @@ import { CheckCircle, X } from 'lucide-react';
 
 export const Contact: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [wantsPartnership, setWantsPartnership] = useState(false);
+  const [workType, setWorkType] = useState<string>("");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [resultMessage, setResultMessage] = useState("");
 
@@ -29,7 +29,7 @@ export const Contact: React.FC = () => {
       if (data.success) {
         setShowSuccessModal(true);
         (event.target as HTMLFormElement).reset();
-        setWantsPartnership(false);
+        setWorkType("");
       } else {
         setResultMessage("Error sending message. Please try again.");
       }
@@ -141,63 +141,80 @@ export const Contact: React.FC = () => {
                 />
             </div>
 
+            {/* Step 1: Select Work Type */}
             <div>
-                <label className="block text-sm font-medium text-white/70 mb-2">Select Service</label>
+                <label className="block text-sm font-medium text-white/70 mb-2">What kind of work do you want from us?</label>
                 <select 
-                    name="service"
+                    name="work_type"
+                    value={workType}
+                    onChange={(e) => setWorkType(e.target.value)}
                     required
                     className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors appearance-none"
                 >
-                    <option value="" disabled selected>Choose a service...</option>
-                    <option value="Custom Apps">Custom Apps</option>
-                    <option value="Automation & Workflows">Automation & Workflows</option>
-                    <option value="Micro SaaS">Micro SaaS</option>
-                    <option value="AI-Powered Websites">AI-Powered Websites</option>
-                    <option value="Voice Agents">Voice Agents</option>
-                    <option value="Lead Generation">Lead Generation</option>
-                    <option value="Other">Other</option>
+                    <option value="" disabled>Select an option...</option>
+                    <option value="Service">Service</option>
+                    <option value="Partnership">Partnership</option>
                 </select>
             </div>
 
-            <div>
-                <label className="block text-sm font-medium text-white/70 mb-2">Describe Your Project</label>
-                <textarea 
-                    rows={4}
-                    name="project_description"
-                    required
-                    className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors placeholder:text-white/20"
-                    placeholder="Describe your project, automation needs, or idea..."
-                />
-            </div>
-
-            <div>
-                <label className="block text-sm font-medium text-white/70 mb-2">Partnership Program</label>
-                <select 
-                    name="partnership"
-                    onChange={(e) => setWantsPartnership(e.target.value === "Yes")}
-                    className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors appearance-none"
-                >
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>
-                </select>
-            </div>
-
-            <AnimatePresence>
-                {wantsPartnership && (
+            {/* Step 2: Conditional Fields based on Work Type */}
+            <AnimatePresence mode="wait">
+                {workType === 'Service' && (
                     <motion.div
-                        initial={{ opacity: 0, height: 0 }}
+                        key="service-fields"
+                        initial={{ opacity: 0, height: 0, overflow: 'hidden' }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="overflow-hidden"
+                        className="space-y-6"
                     >
-                        <label className="block text-sm font-medium text-white/70 mb-2">Describe Your Partnership Needs</label>
-                        <textarea 
-                            rows={3}
-                            name="partnership_details"
-                            required={wantsPartnership}
-                            className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors placeholder:text-white/20"
-                            placeholder="Tell us about your agency, clients, and technical needs..."
-                        />
+                        <div>
+                            <label className="block text-sm font-medium text-white/70 mb-2">Select Service</label>
+                            <select 
+                                name="service"
+                                required
+                                className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors appearance-none"
+                            >
+                                <option value="" disabled selected>Choose a service...</option>
+                                <option value="Custom Apps">Custom Apps</option>
+                                <option value="Automation & Workflows">Automation & Workflows</option>
+                                <option value="Micro SaaS">Micro SaaS</option>
+                                <option value="AI-Powered Websites">AI-Powered Websites</option>
+                                <option value="Voice Agents">Voice Agents</option>
+                                <option value="Lead Generation">Lead Generation</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-white/70 mb-2">Describe Your Project</label>
+                            <textarea 
+                                rows={4}
+                                name="project_description"
+                                required
+                                className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors placeholder:text-white/20"
+                                placeholder="Describe your project, automation needs, or idea..."
+                            />
+                        </div>
+                    </motion.div>
+                )}
+
+                {workType === 'Partnership' && (
+                    <motion.div
+                        key="partnership-fields"
+                        initial={{ opacity: 0, height: 0, overflow: 'hidden' }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                    >
+                        <div>
+                            <label className="block text-sm font-medium text-white/70 mb-2">Describe Your Partnership Needs</label>
+                            <textarea 
+                                rows={4}
+                                name="partnership_details"
+                                required
+                                className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors placeholder:text-white/20"
+                                placeholder="Tell us about your agency, clients, and technical needs..."
+                            />
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>
