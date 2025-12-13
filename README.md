@@ -1,20 +1,50 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+Zilora AI — Web App
 
-# Run and deploy your AI Studio app
+A lightweight AI-powered web application built using Vite + React, designed for fast development, smooth deployment, and easy customization.
 
-This contains everything you need to run your app locally.
+This project was generated using Google AI Studio, but the source code has been cleaned and structured for local development, feature upgrades, and deployment on platforms like Vercel, Netlify, and Render.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1q_UkAIHzZbRGuxJrIT0ukUKfYdGsqnfn
+🚀 Features
 
-## Run Locally
+⚡ Vite for ultra-fast frontend development
 
-**Prerequisites:**  Node.js
+⚛️ React 19
 
+🎨 Clean, minimal UI
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+🔑 Integrated with Gemini API for AI responses
+
+🌐 Ready for deployment on any static or Node host
+
+🛠 Easy to extend and customize
+
+🧰 Prerequisites
+
+Make sure you have:
+
+Node.js v18+
+
+🔧 Setup & Installation
+1️⃣ Clone the Repository
+
+2️⃣ Install Dependencies
+npm install
+
+3️⃣ Run the App Locally
+npm run dev
+
+🧪 Testing
+
+This project does not include a test suite by default,
+but you can easily integrate:
+
+Vitest
+
+Jest
+
+React Testing Library
+
+🤝 Contributing
+
+Pull requests are welcome!
+Feel free to create issues or suggestions for new features.
