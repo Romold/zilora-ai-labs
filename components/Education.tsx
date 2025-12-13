@@ -16,7 +16,7 @@ export const Education: React.FC = () => {
   return (
     <section id="education" className="py-24 bg-surfaceHighlight border-t border-white/5">
       <div className="container max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-16">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
                 <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
                     Want to Build It Yourself? <br/>
@@ -56,24 +56,21 @@ export const Education: React.FC = () => {
                 </Button>
             </div>
             
-            <div className="relative hidden md:block">
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent rounded-2xl" />
-                <div className="h-full border border-white/10 rounded-2xl p-8 flex flex-col justify-end overflow-hidden group">
-                     {/* Pseudo Code Block Visual */}
-                     <div className="font-mono text-sm space-y-2 opacity-60">
-                        <div className="text-primary">import <span className="text-white">Future</span> from <span className="text-white">'zilora-labs'</span>;</div>
-                        <div className="pl-4 text-purple-400">
-  const <span className="text-yellow-400">buildSaaS</span> = async () =&gt; {'{'}
-</div>
-                        <div className="pl-8 text-white">await <span className="text-blue-400">learn()</span>;</div>
-                        <div className="pl-8 text-white">await <span className="text-blue-400">build()</span>;</div>
-                        <div className="pl-8 text-white">return <span className="text-green-400">profit</span>;</div>
-                        <div className="pl-4 text-purple-400">{'}'}</div>
-                     </div>
-                     <div className="mt-8">
-                        <h3 className="text-xl font-bold text-white mb-2">The Build Room</h3>
-                        <p className="text-sm text-muted">Weekly live builds where we go from zero to deployed product.</p>
-                     </div>
+            {/* Replaced code block with Image Card */}
+            <div className="relative hidden md:block h-[500px] w-full group">
+                {/* Decorative background element */}
+                <div className="absolute -inset-1 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl blur-sm opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
+                
+                <div className="relative h-full w-full bg-surface border border-white/10 rounded-2xl overflow-hidden">
+                     <img 
+                        src="/education-hero.jpg"
+                        onError={(e) => {
+                            // Fallback to a high-quality Unsplash image matching the "Dark Green Tech" vibe
+                            e.currentTarget.src = "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop";
+                        }}
+                        alt="Abstract visualization of system architecture and automation" 
+                        className="w-full h-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-100"
+                     />
                 </div>
             </div>
         </div>

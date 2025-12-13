@@ -24,7 +24,7 @@ export const Partnership: React.FC = () => {
               Agency Partners
             </div>
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 leading-tight">
-              Rent a <br/>
+              Outsource a <br/>
               <span className="text-primary">Tech Team</span>
             </h2>
             <p className="text-lg text-muted mb-8 leading-relaxed">
@@ -47,29 +47,27 @@ export const Partnership: React.FC = () => {
 
           {/* Illustration Area */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="relative"
+            className="relative h-[400px] md:h-[500px] w-full"
           >
-            <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full opacity-30" />
-            <div className="relative z-10 bg-surfaceHighlight border border-white/10 rounded-2xl p-8 md:p-12">
-                {/* Abstract visualization of "Backend Team" */}
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-4 mt-8">
-                        <div className="h-32 bg-white/5 rounded-xl border border-white/5 animate-pulse" />
-                        <div className="h-20 bg-primary/10 rounded-xl border border-primary/20" />
-                    </div>
-                    <div className="space-y-4">
-                        <div className="h-20 bg-white/5 rounded-xl border border-white/5" />
-                        <div className="h-32 bg-white/5 rounded-xl border border-white/5 animate-pulse delay-75" />
-                    </div>
-                </div>
-                
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-background border border-white/10 px-6 py-3 rounded-xl shadow-2xl flex items-center gap-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                    <span className="text-sm font-medium">System Operational</span>
-                </div>
+            {/* Background Glow */}
+            <div className="absolute inset-0 bg-primary/10 blur-[80px] rounded-full opacity-40" />
+            
+            <div className="relative h-full w-full bg-surface/50 border border-white/10 rounded-2xl overflow-hidden group backdrop-blur-sm">
+                 <img 
+                    src="public/partnership-growth.jpg"
+                    onError={(e) => {
+                        // Fallback to a high-quality abstract network image representing connection/team
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1558494949-ef526b0042a0?q=80&w=2600&auto=format&fit=crop";
+                    }}
+                    alt="Visualization of outsourcing tech: Robotic arms managing servers on the left, and a hand holding a glowing plant representing growth on the right." 
+                    className="w-full h-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-105"
+                 />
+                 
+                 {/* Subtle vignette overlay */}
+                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent pointer-events-none" />
             </div>
           </motion.div>
         </div>
